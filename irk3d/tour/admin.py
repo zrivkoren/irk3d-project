@@ -23,5 +23,6 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug', 'get_tags']
+    list_display = ['name', 'slug', 'get_tags', 'created']
     inlines = [SceneInline]
+

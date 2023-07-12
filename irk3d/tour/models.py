@@ -11,6 +11,7 @@ class Review(models.Model):
 class Tag(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
+    description = models.TextField(blank=True, null=True)
 
     class Meta:
         verbose_name = 'тег'
@@ -36,7 +37,7 @@ class Scene(models.Model):
 class Tour(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField()
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateField(blank=True, null=True)
     preview_image = models.ImageField(
         'Основное изображение тура',
         upload_to='tours/',
