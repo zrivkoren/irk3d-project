@@ -36,6 +36,8 @@
                   <h4>Designer</h4>
                 </div>
               </div>
+                <p>{{ tour.scenes.all }}</p>
+                <p>{{ tour }}</p>
 
             </div>
           </div>
@@ -46,10 +48,11 @@
               <ul>
                 <li><strong>Теги</strong>
                     {%  for tag in tour.tags.all %}
-                  {{ tag.name }}
+                  <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
                   {% empty %}  отсутствуют
               {% endfor %}
                 </li>
+
 
                 <li><strong>Дата создания</strong> {{ tour.created|date:"F Y" }}</li>
                 <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>

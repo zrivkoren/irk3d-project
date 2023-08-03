@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Review(models.Model):
@@ -19,6 +20,9 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("tag_detail", kwargs={"slug": self.slug})
 
 
 class Scene(models.Model):
@@ -59,5 +63,8 @@ class Tour(models.Model):
     def __str__(self):
         return self.name
 
-    def get_tags(self):
+    def get_admin_tags(self):
         return ",\n".join([t.name for t in self.tags.all()])
+
+    def get_absolute_url(self):
+        return reverse("tour_detail", kwargs={"tour_slug": self.slug})
