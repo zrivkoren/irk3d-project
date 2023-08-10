@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 from django.urls import reverse
 
@@ -47,7 +48,7 @@ class Tour(models.Model):
         upload_to='tours/',
         blank=True
     )
-    text = models.TextField()
+    text = RichTextField()
     vt_url = models.CharField(max_length=160, help_text='URL исходники ВТ относительно ссылки на сайт', blank=True)
     tags = models.ManyToManyField(Tag, related_name='tour')
     is_deeplink = models.BooleanField(default=False)

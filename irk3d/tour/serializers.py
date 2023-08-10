@@ -5,4 +5,4 @@ from .models import Tour
 class TourListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tour
-        fields = '__all__'
+        fields = ['name', 'slug', "created", "preview_image", "text", "vt_url", "tags"]

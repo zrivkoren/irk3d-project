@@ -23,7 +23,7 @@
           <div class="col-lg-8" data-aos="fade-up">
             <div class="portfolio-description">
               <h2>{{ tour.name }}</h2>
-                {{ tour.text|linebreaksbr }}
+                {{ tour.text|safe }}
                  <div class="testimonial-item">
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
@@ -55,7 +55,7 @@
 
 
                 <li><strong>Дата создания</strong> {{ tour.created|date:"F Y" }}</li>
-                <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
+                <li><strong>URL проекта</strong> <a href="{{ tour.url }}">{{ tour.slug }}</a></li>
                 <li><a href="#" class="btn-visit align-self-start">Visit Website</a></li>
               </ul>
             </div>

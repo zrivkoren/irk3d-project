@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-
 from tour.models import Tour, Tag
-from tour.serializers import TourListSerializer
+
+# from rest_framework.decorators import api_view
+# from rest_framework.response import Response
+# from tour.serializers import TourListSerializer
 
 
 class TagDetailView(DetailView):
@@ -37,14 +37,15 @@ def home(request):
     return render(request, 'tour/home.html')
 
 
-@api_view(['GET'])
-def api_tour_list(request):
-    tours = Tour.objects.all()
-    serializer = TourListSerializer(tours, many=True)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def api_tour_list(request):
+#     tours = Tour.objects.all()
+#     serializer = TourListSerializer(tours, many=True)
+#     return Response(serializer.data)
 
-# class TourListView(ListView):
-#     model = Tour
-#
-#     def get_queryset(self):
-#         return Tour.objects.filter(tags__slug=self.kwargs.get('slug'))
+
+class TourListView(ListView):
+    model = Tour
+
+    def get_queryset(self):
+        return Tour.objects.filter(tags__slug=self.kwargs.get('slug'))

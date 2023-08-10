@@ -43,7 +43,7 @@
               </div>
 
               <h2 class="title">
-                <a href="{{ tour.slug }}">{{ tour.name }}</a>
+                <a href="{{ tour.get_absolute_url }}">{{ tour.name }}</a>
               </h2>
 
              <p class="post-category">{%  for tag in tour.tags.all %}
