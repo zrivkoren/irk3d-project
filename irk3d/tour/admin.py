@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
-from .models import Tour, Tag, Scene
+from .models import Tour, Tag, Scene, Feedback
 
 admin.site.unregister(Group)
 
@@ -27,3 +27,7 @@ class TourAdmin(admin.ModelAdmin):
     inlines = [SceneInline]
     save_on_top = True
 
+
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ['author_position_company', 'text']

@@ -3,11 +3,15 @@ from django.db import models
 from django.urls import reverse
 
 
-class Review(models.Model):
-    text = models.TextField()
+class Feedback(models.Model):
+    text = RichTextField()
     author_name = models.CharField(max_length=100)
     author_position_company = models.CharField(max_length=100)
-    author_image = models.ImageField(upload_to='reviews/')
+    author_image = models.ImageField(upload_to='feedback/')
+
+    class Meta:
+        verbose_name = 'отзыв'
+        verbose_name_plural = 'отзывы'
 
 
 class Tag(models.Model):
@@ -52,7 +56,7 @@ class Tour(models.Model):
     vt_url = models.CharField(max_length=160, help_text='URL исходники ВТ относительно ссылки на сайт', blank=True)
     tags = models.ManyToManyField(Tag, related_name='tour')
     is_deeplink = models.BooleanField(default=False)
-    review = models.OneToOneField('Review', on_delete=models.CASCADE, related_name='tour_review', blank=True, null=True)
+    feedback = models.OneToOneField('Feedback', on_delete=models.CASCADE, related_name='tour_feedback', blank=True, null=True)
     yandex_map_url = models.URLField(blank=True, null=True)
     google_maps_url = models.URLField(blank=True, null=True)
     external_link = models.URLField(blank=True, null=True, help_text='Ссылка на тур на внешнем сайте')
