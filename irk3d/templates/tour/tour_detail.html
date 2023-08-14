@@ -55,8 +55,8 @@
 
 
                 <li><strong>Дата создания</strong> {{ tour.created|date:"F Y" }}</li>
-                <li><strong>URL проекта</strong> <a href="{{ tour.url }}">{{ tour.slug }}</a></li>
-                <li><a href="#" class="btn-visit align-self-start">Visit Website</a></li>
+                <li><strong>Ссылка на проект</strong> <a href="{{ tour.url }}">{{ tour.slug }}</a></li>
+                <li><a href="{{ tour.vt_url }}" class="btn-visit align-self-start">Открыть тур</a></li>
               </ul>
             </div>
           </div>

@@ -25,4 +25,5 @@ class TagAdmin(admin.ModelAdmin):
 class TourAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug', 'get_admin_tags', 'created']
     inlines = [SceneInline]
+    save_on_top = True
 
