@@ -56,7 +56,9 @@ class Tour(models.Model):
     vt_url = models.CharField(max_length=160, help_text='URL исходники ВТ относительно ссылки на сайт', blank=True)
     tags = models.ManyToManyField(Tag, related_name='tour')
     is_deeplink = models.BooleanField(default=False)
-    feedback = models.OneToOneField('Feedback', on_delete=models.CASCADE, related_name='tour_feedback', blank=True, null=True)
+    feedback = models.OneToOneField(
+        'Feedback', on_delete=models.CASCADE, related_name='tour_feedback', blank=True, null=True
+    )
     yandex_map_url = models.URLField(blank=True, null=True)
     google_maps_url = models.URLField(blank=True, null=True)
     external_link = models.URLField(blank=True, null=True, help_text='Ссылка на тур на внешнем сайте')
@@ -73,3 +75,18 @@ class Tour(models.Model):
 
     def get_absolute_url(self):
         return reverse("tour_detail", kwargs={"tour_slug": self.slug})
+
+
+class Service(models.Model):
+    order = models.IntegerField(default=0)
+    name = models.CharField(max_length=200)
+    text = RichTextField()
+    icon_bi_class = models.CharField(max_length=100)
+
+    class Meta:
+        ordering = ['order']
+        verbose_name = 'услуга'
+        verbose_name_plural = 'услуги'
+
+    def __str__(self):
+        return self.name

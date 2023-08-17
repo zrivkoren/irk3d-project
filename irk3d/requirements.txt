@@ -9,4 +9,5 @@ sqlparse==0.4.4
 tzdata==2023.3
 wheel==0.41.1
 django-ckeditor==6.7.0
+django-admin-sortable2==2.1.9
 
