@@ -56,8 +56,11 @@ class Tour(models.Model):
     vt_url = models.CharField(max_length=160, help_text='URL исходники ВТ относительно ссылки на сайт', blank=True)
     tags = models.ManyToManyField(Tag, related_name='tour')
     is_deeplink = models.BooleanField(default=False)
-    feedback = models.OneToOneField(
-        'Feedback', on_delete=models.CASCADE, related_name='tour_feedback', blank=True, null=True
+    client = models.OneToOneField(
+        'Client', on_delete=models.SET_NULL, related_name='tour_client', blank=True, null=True
+    )
+    feedback = models.ForeignKey(
+        'Feedback', on_delete=models.SET_NULL, related_name='tour_feedback', blank=True, null=True
     )
     yandex_map_url = models.URLField(blank=True, null=True)
     google_maps_url = models.URLField(blank=True, null=True)
@@ -84,9 +87,23 @@ class Service(models.Model):
     icon_bi_class = models.CharField(max_length=100)
 
     class Meta:
-        ordering = ['order']
         verbose_name = 'услуга'
         verbose_name_plural = 'услуги'
+        ordering = ['order']
+
+    def __str__(self):
+        return self.name
+
+
+class Client(models.Model):
+    order = models.IntegerField(default=0)
+    name = models.CharField(max_length=200)
+    logo = models.ImageField(upload_to='clients-logo/')
+
+    class Meta:
+        verbose_name = 'Клиент'
+        verbose_name_plural = 'Клиенты'
+        ordering = ['order']
 
     def __str__(self):
         return self.name

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from tour.models import Tour, Tag, Feedback, Service
+from tour.models import Tour, Tag, Feedback, Service, Client
 
 
 class TagDetailView(DetailView):
@@ -36,12 +36,7 @@ def home(request):
         "latest_tours": Tour.objects.order_by('-created')[:3],
         "feedbacks": Feedback.objects.all()[::-1],
         "services": Service.objects.all().order_by('order'),
+        "clients": Client.objects.all().order_by('order'),
     }
 
     return render(request, template, context)
-
-# class TourListView(ListView):
-#     model = Tour
-#
-#     def get_queryset(self):
-#         return Tour.objects.filter(tags__slug=self.kwargs.get('slug'))

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from adminsortable2.admin import SortableAdminMixin
-from .models import Tour, Tag, Scene, Feedback, Service
+from .models import Tour, Tag, Scene, Feedback, Service, Client
 
 
 class SceneInline(admin.StackedInline):
@@ -35,6 +35,11 @@ class FeedbackAdmin(admin.ModelAdmin):
 @admin.register(Service)
 class ServiceAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ['order', 'name', 'text']
+
+
+@admin.register(Client)
+class ClientAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ['name']
 
 
 admin.site.unregister(Group)
