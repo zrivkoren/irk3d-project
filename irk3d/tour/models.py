@@ -13,6 +13,9 @@ class Feedback(models.Model):
         verbose_name = 'отзыв'
         verbose_name_plural = 'отзывы'
 
+    def __str__(self):
+        return self.author_position_company
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
@@ -107,3 +110,17 @@ class Client(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class FAQ(models.Model):
+    number = models.IntegerField(default=1)
+    question = models.CharField(max_length=200)
+    answer = models.TextField()
+
+    class Meta:
+        ordering = ['number']
+        verbose_name = 'Вопрос-ответ'
+        verbose_name_plural = 'Вопросы-ответы'
+
+    def __str__(self):
+        return self.question

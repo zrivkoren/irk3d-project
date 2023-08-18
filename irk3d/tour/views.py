@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from tour.models import Tour, Tag, Feedback, Service, Client
+from tour.models import Tour, Tag, Feedback, Service, Client, FAQ
 
 
 class TagDetailView(DetailView):
@@ -37,6 +37,7 @@ def home(request):
         "feedbacks": Feedback.objects.all()[::-1],
         "services": Service.objects.all().order_by('order'),
         "clients": Client.objects.all().order_by('order'),
+        "faqs": FAQ.objects.all().order_by('number'),
     }
 
     return render(request, template, context)

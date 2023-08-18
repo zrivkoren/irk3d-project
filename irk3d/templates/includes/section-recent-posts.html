@@ -8,37 +8,41 @@
   <div class="container">
 
     <div class="row gy-4">
-        {% for tour in latest_tours %}
+      {% for tour in latest_tours %}
 
-      <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <article>
+        <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <article>
 
-          <div class="post-img">
-            <img src="{{ tour.preview_image.url }}" alt="" class="img-fluid">
-          </div>
-
-          <p class="post-category">{%  for tag in tour.tags.all %}
-                  {{ tag.name }}
-                  {% empty %}  empty list!
-              {% endfor %}</p>
-
-          <h2 class="title">
-            <a href="{{ tour.get_absolute_url }}">{{ tour.name }}</a>
-          </h2>
-
-          <div class="d-flex align-items-center">
-            <img src="{% static 'assets/img/blog/blog-author.jpg' %}" alt="" class="img-fluid post-author-img flex-shrink-0">
-            <div class="post-meta">
-              <p class="post-author">Maria Doe</p>
-              <p class="post-date">
-                <time>{{ tour.created|date:"F Y" }} </time>
-              </p>
+            <div class="post-img">
+              <a href="{{ tour.get_absolute_url }}">
+                <img src="{{ tour.preview_image.url }}" alt="" class="img-fluid">
+              </a>
             </div>
-          </div>
 
-        </article>
-      </div>
-{% endfor %}
+            <p class="post-category">{% for tag in tour.tags.all %}
+              <a href="{% url 'home' %}tag/{{ tag.slug }}">{{ tag.name }}</a>
+            {% empty %}  empty list!
+            {% endfor %}
+            </p>
+
+            <h2 class=" title">
+              <a href="{{ tour.get_absolute_url }}">{{ tour.name }}</a>
+            </h2>
+
+            <div class="d-flex align-items-center">
+
+              <img src="{{ tour.client.logo.url }}" alt="" class="img-fluid post-author-img flex-shrink-0">
+              <div class="post-meta">
+                <p class="post-author">{{ tour.client.name }}</p>
+                <p class="post-date">
+                  <time>{{ tour.created|date:"F Y" }} </time>
+                </p>
+              </div>
+            </div>
+
+          </article>
+        </div>
+      {% endfor %}
 
     </div>
   </div>

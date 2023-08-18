@@ -3,9 +3,8 @@
 
 <body class="blog-page" data-bs-spy="scroll" data-bs-target="#navmenu">
 
-  <main id="main">
- {% block content %}
-    <!-- Blog Page Title & Breadcrumbs -->
+<main id="main">
+  {% block content %}
     <div data-aos="fade" class="page-title">
       <div class="heading">
         <div class="container">
@@ -25,49 +24,50 @@
           </ol>
         </div>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
 
-    <!-- Blog Section - Blog Page -->
     <section id="blog" class="blog">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4 posts-list">
-{% for tour in tours  %}
-          <div class="col-xl-4 col-lg-6">
-            <article>
+          {% for tour in tours %}
+            <div class="col-xl-4 col-lg-6">
+              <article>
 
-              <div class="post-img">
-                <img src="{{ tour.preview_image.url }}" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="title">
-                <a href="{{ tour.get_absolute_url }}">{{ tour.name }}</a>
-              </h2>
-
-             <p class="post-category">{%  for tag in tour.tags.all %}
-                  {{ tag.name }}
-                  {% empty %}  empty list!
-              {% endfor %}</p>
-
-
-              <div class="d-flex align-items-center">
-                <img src="{% static 'assets/img/blog/blog-author.jpg' %}" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-date">
-                    <time>{{ tour.created|date:"F Y" }} </time>
-                  </p>
+                <div class="post-img">
+                  <a href="{{ tour.get_absolute_url }}">
+                    <img src="{{ tour.preview_image.url }}" alt="" class="img-fluid">
+                  </a>
                 </div>
-              </div>
 
-            </article>
+                <h2 class="title">
+                  <a href="{{ tour.get_absolute_url }}">{{ tour.name }}</a>
+                </h2>
 
-          </div><!-- End post list item -->
-        {% endfor %}
+                <p class="post-category">{% for tag in tour.tags.all %}
+                  <a href="{% url 'home' %}tag/{{ tag.slug }}">{{ tag.name }}</a>
+                {% empty %}  empty list!
+                {% endfor %}</p>
 
 
+                <div class="d-flex align-items-center">
+                  <img src="{{ tour.client.logo.url }}" alt="" class="img-fluid post-author-img flex-shrink-0">
+                  <div class="post-meta">
+                    <p class="post-author">{{ tour.client.name }}</p>
+                    <p class="post-date">
+                      <time>{{ tour.created|date:"F Y" }} </time>
+                    </p>
+                  </div>
+                </div>
 
-        </div><!-- End blog posts list -->
+              </article>
+
+            </div>
+          {% endfor %}
+
+
+        </div>
 
         <div class="pagination d-flex justify-content-center">
           <ul>
@@ -75,12 +75,11 @@
             <li class="active"><a href="#">2</a></li>
             <li><a href="#">3</a></li>
           </ul>
-        </div><!-- End pagination -->
+        </div>
 
       </div>
-
-    </section><!-- End Blog Section -->
-{% endblock %}
-  </main>
+    </section>
+  {% endblock %}
+</main>
 
 </body>

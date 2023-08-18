@@ -3,108 +3,79 @@
 
 <body class="portfolio-details-page" data-bs-spy="scroll" data-bs-target="#navmenu">
 
-   <main id="main">
- {% block content %}
+<main id="main">
+  {% block content %}
 
-    <!-- Portfolio Details Page Title & Breadcrumbs -->
-
-
-    <!-- Portfolio-details Section - Portfolio Details Page -->
     <section id="portfolio-details" class="portfolio-details">
 
       <div class="container" data-aos="fade-up">
 
-          <div class="post-img">
-                <img src="{{ tour.preview_image.url }}" alt="" class="img-fluid">
-          </div>
+        <div class="post-img">
+          <a href="{% url 'home' %}{{ tour.vt_url }}" target="_blank">
+            <img src="{{ tour.preview_image.url }}" alt="" class="img-fluid"></a>
+        </div>
 
         <div class="row justify-content-between gy-4 mt-4">
 
           <div class="col-lg-8" data-aos="fade-up">
             <div class="portfolio-description">
               <h2>{{ tour.name }}</h2>
-                {{ tour.text|safe }}
-                 <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <div>
-                  <img src="{% static 'assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4>
-                </div>
+              {{ tour.text|safe }}
+
+              <div>
+                {% if tour.is_deeplink %}
+                  <p><b>Точки обзора:</b></p>
+                  {% for scene in tour.scenes.all %}
+                    <p>- <a href="{% url 'home' %}{{ tour.vt_url }}?s={{ scene.name_for_deep_link }}" target="_blank">{{ scene.name }}</a></p>
+                  {% endfor %}
+                {% endif %}
               </div>
-                <p>{{ tour.scenes.all }}</p>
-                <p>{{ tour }}</p>
+
+              {% if tour.feedback %}
+                <div class="testimonial-item">
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>{{ tour.feedback.text|safe }}</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                  <div>
+                    <img src="{{ tour.feedback.author_image.url }}" class="testimonial-img" alt="">
+                    <h3>{{ tour.feedback.author_name }}</h3>
+                    <h4>{{ tour.feedback.author_position_company }}</h4>
+                  </div>
+                </div>
+              {% endif %}
 
             </div>
+
           </div>
 
           <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
             <div class="portfolio-info">
               <h3>Информация о проекте</h3>
               <ul>
-                <li><strong>Теги</strong>
-                    {%  for tag in tour.tags.all %}
-                  <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+                <li><strong>Теги:</strong>
+                  {% for tag in tour.tags.all %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
                   {% empty %}  отсутствуют
-              {% endfor %}
+                  {% endfor %}
                 </li>
 
-
-                <li><strong>Дата создания</strong> {{ tour.created|date:"F Y" }}</li>
-                <li><strong>Ссылка на проект</strong> <a href="{{ tour.url }}">{{ tour.slug }}</a></li>
-                <li><a href="{{ tour.vt_url }}" class="btn-visit align-self-start">Открыть тур</a></li>
+                <li><strong>Дата создания:</strong> {{ tour.created|date:"F Y" }}</li>
+                <li><a href="{{ tour.url }}"><b>Ссылка на проект</b></a></li>
+                <li><a href="{% url 'home' %}{{ tour.vt_url }}" class="btn-visit align-self-start" target="_blank">Открыть тур</a></li>
               </ul>
             </div>
+
           </div>
 
         </div>
 
-
-          <div class="portfolio-details-slider swiper">
-          <template class="swiper-config">
-            {
-            "loop": true,
-            "speed" : 600,
-            "autoplay": {
-            "delay": 5000
-            },
-            "slidesPerView": "auto",
-            "navigation": {
-            "nextEl": ".swiper-button-next",
-            "prevEl": ".swiper-button-prev"
-            }
-            }
-          </template>
-          <div class="swiper-wrapper align-items-center">
-
-            <div class="swiper-slide">
-              <img src="{% static 'assets/img/portfolio/app-1.jpg' %}" alt="">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="{% static 'assets/img/portfolio/product-1.jpg' %}" alt="">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" alt="">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="{% static 'assets/img/portfolio/books-1.jpg' %}" alt="">
-            </div>
-
-          </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
 
       </div>
 
+
     </section><!-- End Portfolio-details Section -->
-{% endblock %}
-   </main>
+  {% endblock %}
+</main>
 </body>
