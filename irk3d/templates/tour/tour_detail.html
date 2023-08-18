@@ -11,7 +11,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="post-img">
-          <a href="{% url 'home' %}{{ tour.vt_url }}" target="_blank">
+          <a href="{{ tour.get_vt_url }}" target="_blank">
             <img src="{{ tour.preview_image.url }}" alt="" class="img-fluid"></a>
         </div>
 
@@ -63,7 +63,7 @@
 
                 <li><strong>Дата создания:</strong> {{ tour.created|date:"F Y" }}</li>
                 <li><a href="{{ tour.url }}"><b>Ссылка на проект</b></a></li>
-                <li><a href="{% url 'home' %}{{ tour.vt_url }}" class="btn-visit align-self-start" target="_blank">Открыть тур</a></li>
+                <li><a href="{{ tour.get_vt_url }}" class="btn-visit align-self-start" target="_blank">Открыть тур</a></li>
               </ul>
             </div>
 

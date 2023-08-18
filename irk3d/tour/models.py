@@ -21,10 +21,12 @@ class Tag(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
     description = models.TextField(blank=True, null=True)
+    order = models.IntegerField(default=0)
 
     class Meta:
         verbose_name = 'тег'
         verbose_name_plural = 'теги'
+        ordering = ['order']
 
     def __str__(self):
         return self.name
@@ -50,13 +52,16 @@ class Tour(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField()
     created = models.DateField(blank=True, null=True)
+    order = models.IntegerField(default=0)
     preview_image = models.ImageField(
         'Основное изображение тура',
         upload_to='tours/',
         blank=True
     )
     text = RichTextField()
-    vt_url = models.CharField(max_length=160, help_text='URL исходники ВТ относительно ссылки на сайт', blank=True)
+    vt_url = models.CharField(
+        max_length=160, help_text='URL исходников ВТ относительно ссылки на сайт', blank=True, null=True
+    )
     tags = models.ManyToManyField(Tag, related_name='tour')
     is_deeplink = models.BooleanField(default=False)
     client = models.OneToOneField(
@@ -72,6 +77,7 @@ class Tour(models.Model):
     class Meta:
         verbose_name = 'тур'
         verbose_name_plural = 'туры'
+        ordering = ['order']
 
     def __str__(self):
         return self.name
@@ -81,6 +87,11 @@ class Tour(models.Model):
 
     def get_absolute_url(self):
         return reverse("tour_detail", kwargs={"tour_slug": self.slug})
+
+    def get_vt_url(self):
+        if self.external_link:
+            return self.external_link
+        return reverse('home') + self.vt_url
 
 
 class Service(models.Model):

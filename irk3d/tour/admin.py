@@ -10,15 +10,16 @@ class SceneInline(admin.StackedInline):
 
 
 @admin.register(Tag)
-class TagAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug']
+class TagAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ['name', 'order', 'slug']
 
 
 @admin.register(Tour)
-class TourAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug', 'get_admin_tags', 'created']
+class TourAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ['name', 'order', 'slug', 'get_admin_tags', 'created']
     inlines = [SceneInline]
     save_on_top = True
+    list_filter = ['tags']
 
 
 @admin.register(Feedback)
