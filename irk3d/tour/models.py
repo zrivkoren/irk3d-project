@@ -22,6 +22,7 @@ class Tag(models.Model):
     slug = models.SlugField(max_length=100)
     description = models.TextField(blank=True, null=True)
     order = models.IntegerField(default=0)
+    is_in_portfolio = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'тег'

@@ -38,6 +38,7 @@ def home(request):
         "services": Service.objects.all().order_by('order'),
         "clients": Client.objects.all().order_by('order'),
         "faqs": FAQ.objects.all().order_by('number'),
+        "tags": Tag.objects.filter(is_in_portfolio=True).order_by('order'),
     }
 
     return render(request, template, context)

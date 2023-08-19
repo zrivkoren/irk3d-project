@@ -11,7 +11,7 @@ class SceneInline(admin.StackedInline):
 
 @admin.register(Tag)
 class TagAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ['name', 'order', 'slug']
+    list_display = ['name', 'order', 'slug', 'is_in_portfolio']
 
 
 @admin.register(Tour)
