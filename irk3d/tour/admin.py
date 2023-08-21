@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from adminsortable2.admin import SortableAdminMixin
-from .models import Tour, Tag, Scene, Feedback, Service, Client, FAQ
+from .models import Tour, Tag, Scene, Feedback, Service, Client, FAQ, Irk3dSettings
 
 
 class SceneInline(admin.StackedInline):
@@ -40,6 +40,11 @@ class ClientAdmin(SortableAdminMixin, admin.ModelAdmin):
 @admin.register(FAQ)
 class FAQAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ['number', 'question', 'answer']
+
+
+@admin.register(Irk3dSettings)
+class Irk3dSettingsAdmin(admin.ModelAdmin):
+    list_display = ['price_low', 'price_medium', 'price_high', 'vt_count', 'panorama_count']
 
 
 admin.site.unregister(Group)

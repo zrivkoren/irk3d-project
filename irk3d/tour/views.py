@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from tour.models import Tour, Tag, Feedback, Service, Client, FAQ
+from tour.models import Tour, Tag, Feedback, Service, Client, FAQ, Irk3dSettings
 
 
 class TagDetailView(DetailView):
@@ -39,6 +39,7 @@ def home(request):
         "clients": Client.objects.all().order_by('order'),
         "faqs": FAQ.objects.all().order_by('number'),
         "tags": Tag.objects.filter(is_in_portfolio=True).order_by('order'),
+        "settings": Irk3dSettings.objects.first(),
     }
 
     return render(request, template, context)

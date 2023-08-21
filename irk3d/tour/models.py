@@ -136,3 +136,11 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.question
+
+
+class Irk3dSettings(models.Model):
+    price_low = models.IntegerField()
+    price_medium = models.IntegerField()
+    price_high = models.IntegerField()
+    vt_count = models.IntegerField()
+    panorama_count = models.IntegerField()
