@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1^yc*zdfs=njw)akehg7uuldt%g_qsjus5*!c^%ta0tm0t5t)i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['149.154.69.180', 'zrivkoren.fvds.ru', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'ckeditor',
     'adminsortable2',
+    'django_dump_load_utf8',
 
     'tour',
 ]
