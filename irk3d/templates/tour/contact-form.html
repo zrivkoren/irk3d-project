@@ -1,0 +1,33 @@
+<form action="" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+	{% csrf_token %}
+	{% if success %}
+		<div class="container h-100 d-flex align-items-center justify-content-center">
+			<strong>Ваше сообщение отправлено!</strong>
+		</div>
+	{% else %}
+	<div class="row gy-4">
+
+		<div class="col-md-12">
+			{% if contact_form.content.errors %}
+				<div class="errors">
+					<strong>{{ contact_form.content.errors }}</strong>
+				</div>
+			{% endif %}
+			{{ contact_form.content }}
+		</div>
+
+		<div class="col-md-6">
+			{{ contact_form.name }}
+		</div>
+
+		<div class="col-md-6 ">
+			{{ contact_form.contact_info }}
+		</div>
+
+
+		<div class="col-md-12 text-center">
+			<button type="submit">Отправить сообщение</button>
+		</div>
+{% endif %}
+	</div>
+</form>

@@ -56,8 +56,7 @@ class Tour(models.Model):
     order = models.IntegerField(default=0)
     preview_image = models.ImageField(
         'Основное изображение тура',
-        upload_to='tours/',
-        blank=True
+        upload_to='tours/'
     )
     text = RichTextField()
     vt_url = models.CharField(
@@ -144,3 +143,19 @@ class Irk3dSettings(models.Model):
     price_high = models.IntegerField()
     vt_count = models.IntegerField()
     panorama_count = models.IntegerField()
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=120)
+    contact_info = models.CharField(max_length=140)
+    time_create = models.DateTimeField(auto_now_add=True, verbose_name='Дата отправки')
+    ip_address = models.GenericIPAddressField(verbose_name='IP отправителя', blank=True, null=True)
+    content = models.TextField(verbose_name='Содержимое письма')
+
+    class Meta:
+        verbose_name = 'Обратная связь'
+        verbose_name_plural = 'Обратная связь'
+        ordering = ['-time_create']
+
+    def __str__(self):
+        return f'Вам письмо от {self.contact_info}'
