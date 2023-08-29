@@ -148,3 +148,5 @@ dmypy.json
 /irk3d/tour/migrations/0008_alter_tour_preview_image.py
 /irk3d/tour/migrations/0009_alter_scene_options_rename_title_scene_name.py
 /irk3d/dump.json
+/irk3d/dataN.json
+/nginx_default.txt
