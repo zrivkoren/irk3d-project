@@ -64,7 +64,7 @@ class Tour(models.Model):
     )
     tags = models.ManyToManyField(Tag, related_name='tour')
     is_deeplink = models.BooleanField(default=False)
-    client = models.OneToOneField(
+    client = models.ForeignKey(
         'Client', on_delete=models.SET_NULL, related_name='tour_client', blank=True, null=True
     )
     feedback = models.ForeignKey(

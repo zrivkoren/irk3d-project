@@ -2,6 +2,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponseServerError
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView
+from django.core.paginator import Paginator
 
 from config.settings import EMAIL_HOST_USER, EMAIL_TO
 from tour.models import Tour, Tag, Feedback, Service, Client, FAQ, Irk3dSettings, Contact
@@ -17,11 +18,16 @@ class TagDetailView(DetailView):
     model = Tag
     context_object_name = 'tag'
     template_name = 'tour/tag_detail.html'
+    paginate_by = 6
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         tag = self.get_object()
-        context['tours'] = Tour.objects.filter(tags__in=[tag])
+        tours = Tour.objects.filter(tags__in=[tag])
+        paginator = Paginator(tours, 6)
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        context['page_obj'] = page_obj
         return context
 
 
@@ -78,7 +84,7 @@ def home(request):
             except Exception as e:
                 print(e)
                 return HttpResponseServerError(
-                    f"{e} Ошибка сервера!  --- Отправка сообщения не удалась{EMAIL_HOST_PASSWORD}|||")
+                    f"{e} Ошибка сервера!  --- Отправка сообщения не удалась|")
 
             context['success'] = True
             return render(request, template, context)

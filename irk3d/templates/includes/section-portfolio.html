@@ -25,7 +25,7 @@
 
         {% for tag in tags %}
 
-          {% for t_item in tag.tour.all %}
+          {% for t_item in tag.tour.all|slice:":6" %}
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ tag.slug }}">
 
