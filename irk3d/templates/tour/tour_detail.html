@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block header %}
+  {% include 'includes/header.html' with header_class='header sticky-top' %}
+{% endblock %}
+
 <body class="portfolio-details-page" data-bs-spy="scroll" data-bs-target="#navmenu">
 
+
 <main id="main">
+
 	{% block content %}
 
 		<section id="portfolio-details" class="portfolio-details">
@@ -63,7 +69,7 @@
 
 								<li><strong>Дата создания:</strong> {{ tour.created|date:"F Y" }}</li>
 								<li><a href="{{ tour.url }}"><b>Ссылка на проект</b></a></li>
-								<li><a href="{{ tour.get_vt_url }}" class="btn-visit align-self-start glightbox preview-link">Открыть тур</a></li>
+								<li><a href="{{ tour.get_vt_url }}" class="btn-visit align-self-start">Открыть тур</a></li>
 							</ul>
 						</div>
 
@@ -78,25 +84,4 @@
 		</section><!-- End Portfolio-details Section -->
 	{% endblock %}
 </main>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var lightbox = GLightbox({
-            selector: 'glightbox',
-            width: '100%',
-            touchNavigation: false,
-            closeButton: true,
-        });
-
-        document.querySelector('.preview-link').addEventListener('click', function (e) {
-            e.preventDefault();
-            var url = this.getAttribute('href');
-            lightbox.setElements([{
-                'content': '<iframe src="' + url + '" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>',
-                'type': 'inline'
-            }]);
-            lightbox.open();
-        });
-    });
-</script>
 </body>

@@ -1,5 +1,5 @@
 {% load static %}
-<header id="header" class="header fixed-top d-flex align-items-center">
+<header id="header" class="{{ header_class|default:'header fixed-top' }} d-flex align-items-center">
   <div class="container-fluid d-flex align-items-center justify-content-between">
 
     <a href="{% url 'home' %}" class="logo d-flex align-items-center me-auto me-xl-0">
@@ -10,11 +10,12 @@
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="{% url 'home' %}" class="active">Главная</a></li>
+        <li><a href="{% url 'home' %}"{{ header_menu_home_active|default:' class="active"' }}>Главная</a></li>
         <li><a href="{% url 'home' %}#about">О нас</a></li>
         <li><a href="{% url 'home' %}#services">Услуги</a></li>
-        <li><a href="{% url 'home' %}#portfolio">Портфолио</a></li>
-        <li><a href="{% url 'home' %}#testimonials">Отзывы</a></li>
+        <li><a href="{% url 'home' %}#portfolio"{{ header_menu_portfolio_active|default:'' }}>Портфолио</a></li>
+	      <li><a href="{% url 'home' %}#testimonials">Отзывы</a></li>
+	      <li><a href="{% url 'home' %}#pricing">Цены</a></li>
       </ul>
 
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

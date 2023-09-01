@@ -3,25 +3,20 @@
 
 {% include 'includes/head.html' %}
 
-<body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
 
-  <main id="main">
-      {% block content %}
+	{% block content %}
 
-{% include 'includes/section-hero.html' %}
-{% include 'includes/section-features.html' %}
-{% include 'includes/section-stats.html' %}
-{% include 'includes/section-about.html' %}
-{% include 'includes/section-clients.html' %}
-{% include 'includes/section-services.html' %}
-{% include 'includes/section-portfolio.html' %}
-{% include 'includes/section-price.html' %}
-{% include 'includes/section-faq.html' %}
-{% include 'includes/section-testimonials.html' %}
+		{% include 'includes/section-hero.html' %}
+		{% include 'includes/section-features.html' %}
+		{% include 'includes/section-stats.html' %}
+		{% include 'includes/section-about.html' %}
+		{% include 'includes/section-clients.html' %}
+		{% include 'includes/section-services.html' %}
+		{% include 'includes/section-portfolio.html' %}
+		{% include 'includes/section-testimonials.html' %}
+		{% include 'includes/section-price.html' %}
+		{% include 'includes/section-faq.html' %}
+		{% include 'includes/section-recent-posts.html' %}
+		{% include 'includes/section-contact.html' %}
 
-{% include 'includes/section-recent-posts.html' %}
-{% include 'includes/section-contact.html' %}
-
-      {% endblock %}
-  </main>
-</body>
+	{% endblock %}

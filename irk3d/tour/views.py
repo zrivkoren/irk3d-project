@@ -43,6 +43,13 @@ class TourDetailView(DetailView):
     model = Tour
     slug_url_kwarg = 'tour_slug'
     context_object_name = 'tour'
+    template_name = 'tour/tour_detail_v2.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['latest_tours'] = Tour.objects.order_by('-created')[:2]
+        context['all_tags'] = Tag.objects.all().order_by('order')
+        return context
 
 
 def home(request):
