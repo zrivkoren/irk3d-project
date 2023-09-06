@@ -62,7 +62,7 @@ def home(request):
         "faqs": FAQ.objects.all().order_by('number'),
         "tags": Tag.objects.filter(is_in_portfolio=True).order_by('order'),
         "settings": Irk3dSettings.objects.first(),
-        "contact_form": ContactForm(),
+        # "contact_form": ContactForm(),
     }
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -95,14 +95,19 @@ def home(request):
 
             context['success'] = True
             return render(request, template, context)
+        else:
+            context["contact_form"] = form
+            return render(request, template, context)
+    else:
+        context["contact_form"] = ContactForm()
 
     return render(request, template, context)
 
 
-class ContactFormView(CreateView):
-    model = Contact
-    form_class = ContactForm
-    success_url = '/'
+# class ContactFormView(CreateView):
+#     model = Contact
+#     form_class = ContactForm
+#     success_url = '/'
 
 
 def get_client_ip(request):

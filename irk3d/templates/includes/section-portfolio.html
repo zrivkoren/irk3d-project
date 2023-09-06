@@ -33,8 +33,7 @@
 
               <div class="portfolio-info">
 	              <a href="{{ t_item.get_absolute_url }}" title="Перейти на страницу тура"><h4>{{ t_item.name }}</h4></a>
-                <p>{{ t_item.client }}</p>
-
+                {% if t_item.client %}<p>{{ t_item.client }}</p>{% endif %}
               </div>
 
             </div>

@@ -9,9 +9,20 @@
 
 			<div class="col-md-6">
 				{{ contact_form.name }}
+				{% if contact_form.name.errors %}
+        <div class="errors">
+            <strong>Ошибка ввода: {{ contact_form.name.errors }}</strong>
+        </div>
+    {% endif %}
 			</div>
+
 			<div class="col-md-6 ">
 				{{ contact_form.contact_info }}
+				{% if contact_form.contact_info.errors %}
+					<div class="errors">
+						<strong>Ошибка ввода: {{ contact_form.contact_info.errors }}</strong>
+					</div>
+				{% endif %}
 			</div>
 
 			<div class="col-md-12">
