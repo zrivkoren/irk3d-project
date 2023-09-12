@@ -3,7 +3,7 @@
   <div class="container footer-top">
     <div class="row gy-4">
       <div class="col-lg-5 col-md-12 footer-about">
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="{% url 'home' %}{% if request.path == '/' %}#{% else %}{% endif %}" class="logo d-flex align-items-center">
           <span>Irk3D</span>
         </a>
         <p>Мы делаем лучшие сферические 3D панорамы в Иркутске, любой сложности и в кратчайшие сроки, с 2010 года.</p>
