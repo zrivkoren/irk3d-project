@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sorl.thumbnail',
     'ckeditor',
+    'ckeditor_uploader',
     'adminsortable2',
     'django_dump_load_utf8',
 

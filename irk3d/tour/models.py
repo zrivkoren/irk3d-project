@@ -1,4 +1,5 @@
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.urls import reverse
 
@@ -58,7 +59,7 @@ class Tour(models.Model):
         'Основное изображение тура',
         upload_to='tours/'
     )
-    text = RichTextField()
+    text = RichTextUploadingField()
     vt_url = models.CharField(
         max_length=160, help_text='URL исходников ВТ относительно ссылки на сайт', blank=True, null=True
     )
