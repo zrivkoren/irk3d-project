@@ -144,8 +144,9 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
-        'height': 300,
+        'height': 400,
         'width': 1800,
+        'removePlugins': 'scayt,save,flash,templates,about,newpage,language,print',
     },
 }
 
