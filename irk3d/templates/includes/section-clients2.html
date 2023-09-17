@@ -1,0 +1,56 @@
+{% load static %}
+<section id="clients" class="clients2">
+	<div class="container section-title" data-aos="fade-up">
+		<h2>Наши клиенты</h2>
+		<p>Уже оценили преимущества виртуальных туров, созданных командой Irk3D</p>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row gy-4">
+
+			<div class="swiper">
+				<template class="swiper-config">
+					{
+					"loop": true,
+					"speed": 600,
+					"autoplay": {
+					"delay": 5000
+					},
+					"slidesPerView": 2,
+					"breakpoints": {
+					"768": {
+					"slidesPerView": 4
+					},
+					"1200": {
+					"slidesPerView": 6
+					},
+					"1600": {
+					"slidesPerView": 7
+					}
+					},
+					"pagination": {
+					"el": ".swiper-pagination",
+					"type": "bullets",
+					"clickable": true
+					},
+					"navigation": {
+					"nextEl": ".swiper-button-next",
+					"prevEl": ".swiper-button-prev"
+					}
+					}
+				</template>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-wrapper">
+					{% for client in clients %}
+						<div class="col-xl-2 col-md-3 col-6 client-logo swiper-slide">
+							<a href="{{ client.tour_client.first.get_absolute_url }}"><img src="{{ client.logo.url }}"
+							                                                               class="img-fluid" alt=""></a>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="swiper-button-next"></div>
+			</div>
+
+		</div>
+	</div>
+</section>

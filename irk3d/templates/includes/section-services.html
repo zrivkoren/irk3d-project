@@ -1,27 +1,22 @@
 <section id="services" class="services">
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Услуги</h2>
-      <p>В стоимость <b>каждого</b> тарифа входят следующие услуги:</p>
-  </div>
+	<div class="container section-title" data-aos="fade-up">
+		<h2>Услуги</h2>
+		<p>Мы оказываем полный спектр услуг по съемке 3D панорам <b>высочайшего</b> качества и создании виртуальных туров:</p>
+	</div>
+	<div class="container">
+		<div class="row gy-4">
+			{% for serv in services %}
+				<div class="col-lg-6 " data-aos="fade-up" data-aos-delay="100">
+					<div class="service-item d-flex">
+						<div class="icon flex-shrink-0"><i class="{{ serv.icon_bi_class }}"></i></div>
+						<div>
+							<h4 class="title">{{ serv.name }}</h4>
+							<p class="description">{{ serv.text|safe }}</p>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
 
-  <div class="container">
-
-    <div class="row gy-4">
-{% for serv in services %}
-
-      <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="100">
-        <div class="service-item d-flex">
-          <div class="icon flex-shrink-0"><i class="{{ serv.icon_bi_class }}"></i></div>
-          <div>
-            <h4 class="title">{{ serv.name }}</h4>
-            <p class="description">{{ serv.text|safe }}</p>
-          </div>
-        </div>
-      </div>
-
-{% endfor %}
-
-    </div>
-
-  </div>
+		</div>
+	</div>
 </section>

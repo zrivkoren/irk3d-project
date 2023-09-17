@@ -39,12 +39,14 @@ class Tag(models.Model):
 
 class Scene(models.Model):
     name = models.CharField(max_length=160)
+    order = models.IntegerField(default=0)
     name_for_deep_link = models.CharField(max_length=160, blank=True, null=True)
     tour = models.ForeignKey('Tour', on_delete=models.CASCADE, related_name='scenes', blank=True, null=True)
 
     class Meta:
         verbose_name = 'панорама'
         verbose_name_plural = 'панорамы'
+        ordering = ['order']
 
     def __str__(self):
         return self.name

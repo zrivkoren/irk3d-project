@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
-from adminsortable2.admin import SortableAdminMixin
+from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 from .models import Tour, Tag, Scene, Feedback, Service, Client, FAQ, Irk3dSettings, Contact
 
 
-class SceneInline(admin.StackedInline):
+class SceneInline(SortableInlineAdminMixin, admin.StackedInline):
     model = Scene
     extra = 3
 

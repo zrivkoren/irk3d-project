@@ -923,6 +923,44 @@ section {
   }
 }
 
+/* Clients2 Section - Home Page
+------------------------------*/
+.clients2 {
+  padding: 10px 0;
+}
+
+
+.clients2 .client-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.clients2 .client-logo img {
+  padding: 40px;
+  transition: 0.3s;
+  opacity: 0.5;
+  filter: grayscale(100);
+}
+
+.clients2 .client-logo img:hover {
+  filter: none;
+  opacity: 1;
+}
+
+.clients2 .swiper-button-next,
+.clients2 .swiper-button-prev {
+  background-color: white;
+  color: var(--color-secondary);
+}
+
+@media (max-width: 640px) {
+  .clients2 .client-logo img {
+    padding: 20px;
+  }
+}
+
 /* About Section - Home Page
 ------------------------------*/
 .about {
@@ -1866,7 +1904,8 @@ section {
   transform: scale(0.6);
 }
 
-.testimonials .swiper-pagination {
+.testimonials .swiper-pagination
+ {
   margin-top: 20px;
   margin-bottom: 20px;
   position: relative;
