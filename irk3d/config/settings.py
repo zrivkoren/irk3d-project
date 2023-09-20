@@ -25,7 +25,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['149.154.69.180', 'zrivkoren.fvds.ru', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['149.154.69.180', 'zrivkoren.fvds.ru', 'irk3d.ru', '127.0.0.1', 'localhost']
 
 # Application definition
 

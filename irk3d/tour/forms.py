@@ -1,6 +1,6 @@
 from django import forms
 from .models import Contact
-from django.core.validators import EmailValidator, RegexValidator
+from django.core.validators import EmailValidator, RegexValidator, URLValidator
 from django.core.exceptions import ValidationError
 
 
@@ -37,5 +37,17 @@ class ContactForm(forms.ModelForm):
                 phone_validator(data)
             except ValidationError as e:
                 raise ValidationError("Напишите действительный адрес электронной почты или номер телефона(начиная с 8 или +7, или городской. без пробелов)")
+        return data
 
+    def clean_content(self):
+        data = self.cleaned_data['content']
+        url_validator = URLValidator()
+
+        for word in data.split():
+            try:
+                url_validator(word)
+            except ValidationError as e:
+                pass
+            else:
+                raise ValidationError("Сообщение не должно содержать ссылки")
         return data
