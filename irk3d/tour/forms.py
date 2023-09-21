@@ -2,6 +2,7 @@ from django import forms
 from .models import Contact
 from django.core.validators import EmailValidator, RegexValidator, URLValidator
 from django.core.exceptions import ValidationError
+from re import search
 
 STOP_WORDS = ('http', '.com', '.ua')
 
@@ -50,5 +51,7 @@ class ContactForm(forms.ModelForm):
         for stop_word in STOP_WORDS:
             if stop_word in data:
                 raise ValidationError("Сообщение не должно содержать ссылки")
+        if not bool(search(r'[а-яА-Я]', data)):
+            raise ValidationError("STOP SPAM!")
 
         return data
