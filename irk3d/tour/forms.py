@@ -4,7 +4,7 @@ from django.core.validators import EmailValidator, RegexValidator, URLValidator
 from django.core.exceptions import ValidationError
 from re import search
 
-STOP_WORDS = ('http', '.com', '.ua')
+STOP_WORDS = ('http', '.com', '.ua', '.ru', 'базы')
 
 
 class ContactForm(forms.ModelForm):

@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /vt/
+Disallow: /virttur/
+Crawl-delay: 10

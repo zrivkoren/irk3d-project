@@ -177,6 +177,7 @@ section {
 .header .logo img {
   max-height: 40px;
   margin-right: 6px;
+  margin-left: 25%;
 }
 
 .header .logo h1 {
@@ -199,7 +200,7 @@ section {
   background: var(--primary-color);
   font-size: 14px;
   padding: 8px 26px;
-  margin: 0;
+  margin: 0 4% 0 0;
   border-radius: 4px;
   transition: 0.3s;
 }
@@ -252,7 +253,7 @@ section {
 ------------------------------*/
 .index-page .header {
   --background-color: rgba(255, 255, 255, 0);
-  --secondary-color: #3b6985;
+  --secondary-color: #8fc8d3;
   --nav-color: rgba(255, 255, 255, 0.515);
   --nav-hover-color: #ffffff;
 }
@@ -261,7 +262,7 @@ section {
 ------------------------------*/
 .index-page.scrolled .header {
   --background-color: #ffffff;
-  --secondary-color: #444444;
+  --secondary-color: #3b6985;
   --nav-color: #444444;
   --nav-hover-color: #d83535;
 }
@@ -806,6 +807,7 @@ section {
   padding: 160px 0 80px 0;
   display: flex;
   align-items: center;
+  text-align: center;
   justify-content: center;
 }
 
@@ -844,6 +846,25 @@ section {
   color: rgba(var(--default-color-rgb), 0.8);
   margin: 5px 0 0 0;
   font-size: 20px;
+}
+
+.hero .hero-btn {
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 40px;
+  border-radius: 5px;
+  transition: 0.5s;
+  margin: 20px;
+  border: 2px solid var(--contrast-color);
+  color: var(--contrast-color);
+}
+
+.hero .hero-btn:hover {
+  background: var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
 .hero .sign-up-form {
