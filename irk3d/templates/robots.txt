@@ -4,4 +4,5 @@ Disallow: /private/
 Disallow: /api/
 Disallow: /vt/
 Disallow: /virttur/
+Disallow: /catalog/
 Crawl-delay: 10

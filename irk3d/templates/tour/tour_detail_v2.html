@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block head %}
 
+	{% include 'includes/head.html' with title=tour.name|add:" Виртуальный тур Irk3D" description=tour.text|striptags|safe|slice:":190" %}
+{% endblock %}
 {% block body_up %}
 	<body class="blog-details-page" data-bs-spy="scroll" data-bs-target="#navmenu">
 {% endblock %}

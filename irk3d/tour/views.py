@@ -62,10 +62,12 @@ def home(request):
         "faqs": FAQ.objects.all().order_by('number'),
         "tags": Tag.objects.filter(is_in_portfolio=True).order_by('order'),
         "settings": Irk3dSettings.objects.first(),
+        "title": "Irk3D - Виртуальные туры и лучшие 3D панорамы",
 
     }
     if request.method == 'POST':
         form = ContactForm(request.POST)
+        context['form_is_bound'] = True
 
         if form.is_valid():
             contact = form.save(commit=False)
@@ -97,6 +99,7 @@ def home(request):
             return render(request, template, context)
         else:
             context["contact_form"] = form
+            context['success'] = False
             return render(request, template, context)
     else:
         context["contact_form"] = ContactForm()

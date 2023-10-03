@@ -1,4 +1,17 @@
 <form action="" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+	{% if form_is_bound %}
+		<script>
+        function gotoid() {
+            var url = new URL(window.location.href);
+            url.pathname = '/';
+            url.hash = 'contact';
+            window.location = url.href;
+        }
+        {% if form_is_bound %}
+            window.onload = gotoid;
+        {% endif %}
+		</script>
+	{% endif %}
 	{% csrf_token %}
 	{% if success %}
 		<div class="container h-100 d-flex align-items-center justify-content-center">
@@ -10,10 +23,10 @@
 			<div class="col-md-6">
 				{{ contact_form.name }}
 				{% if contact_form.name.errors %}
-        <div class="errors">
-            <strong>Ошибка ввода: {{ contact_form.name.errors }}</strong>
-        </div>
-    {% endif %}
+					<div class="errors">
+						<strong>Ошибка ввода: {{ contact_form.name.errors }}</strong>
+					</div>
+				{% endif %}
 			</div>
 
 			<div class="col-md-6 ">

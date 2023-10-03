@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block head %}
+	{% include 'includes/head.html' with title="Виртуальные туры категории "|add:tag.name %}
+{% endblock %}
 
 <body class="blog-page" data-bs-spy="scroll" data-bs-target="#navmenu">
-
 <main id="main">
 	{% block content %}
 		<div data-aos="fade" class="page-title">
@@ -16,13 +18,10 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 
 		<section id="blog" class="blog">
-
 			<div class="container" data-aos="fade-up" data-aos-delay="100">
-
 				<div class="row gy-4 posts-list">
 					{% for tour in page_obj %}
 						<div class="col-xl-4 col-lg-6">
@@ -43,7 +42,6 @@
 								{% empty %}  empty list!
 								{% endfor %}</p>
 
-
 								<div class="d-flex align-items-center">
 									<img src="{{ tour.client.logo.url }}" alt="" class="img-fluid post-author-img flex-shrink-0">
 									<div class="post-meta">
@@ -53,12 +51,10 @@
 										</p>
 									</div>
 								</div>
-
 							</article>
 
 						</div>
 					{% endfor %}
-
 				</div>
 
 				{% if page_obj.has_other_pages %}
