@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-	{% include 'includes/head.html' with title="Виртуальные туры категории "|add:tag.name %}
+	{% include 'includes/head.html' with title="Виртуальные туры категории "|add:tag.name description=tag.description|striptags|safe|slice:":190"  %}
 {% endblock %}
 
 <body class="blog-page" data-bs-spy="scroll" data-bs-target="#navmenu">

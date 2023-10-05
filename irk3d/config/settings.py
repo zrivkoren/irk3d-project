@@ -30,7 +30,7 @@ LOGGING = {
     "disable_existing_loggers": False,
     "handlers": {
         "file": {
-            "level": "ERROR",
+            "level": "CRITICAL",
             "class": "logging.FileHandler",
             "filename": "debug.log",
         },

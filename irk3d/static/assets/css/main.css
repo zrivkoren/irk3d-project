@@ -2717,6 +2717,17 @@ section {
   background: rgba(var(--primary-color-rgb), 0.8);
 }
 
+.blog-details .sidebar .tour-link a {
+  background-color: var(--primary-color);
+  color: var(--contrast-color);
+  padding: 8px 30px 10px 30px;
+  border-radius: 4px;
+}
+
+.blog-details .sidebar .tour-link a:hover {
+  background-color: rgba(var(--primary-color-rgb), 0.9);
+}
+
 .blog-details .sidebar .categories ul {
   list-style: none;
   padding: 0;
