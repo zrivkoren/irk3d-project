@@ -1531,9 +1531,6 @@ section {
   color: rgba(var(--default-color-rgb), 0.3);
 }
 
-.pricing ul .na span {
-  text-decoration: line-through;
-}
 
 .pricing .buy-btn {
   color: rgba(var(--default-color-rgb), 0.8);
